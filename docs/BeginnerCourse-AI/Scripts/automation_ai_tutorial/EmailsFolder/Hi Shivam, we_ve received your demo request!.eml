@@ -1,0 +1,1134 @@
+Delivered-To: shivam.gupta@predikly.com
+Received: by 2002:a59:cc52:0:b0:436:b1ac:df54 with SMTP id j18csp1720293vqv; Tue, 12 Dec 2023 10:22:47 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGZUCe4LoJbjNO+uABGqALhU525/SFexO8lOQ1MMSHA/8UfT1pETFRmExrPYXHKEirT1cFf
+X-Received: by 2002:a17:90b:186:b0:28a:d736:9c9a with SMTP id t6-20020a17090b018600b0028ad7369c9amr389072pjs.2.1702405366588;
+        Tue, 12 Dec 2023 10:22:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702405366; cv=none;        d=google.com;
+ s=arc-20160816;        b=PqjzdX5T1369kCBRWt8UbXCC8yF/bxr4nuoCjUZU0/dinsyWvOyj9Z0kOCAPaYtnTR
+         A3sEqoAMinfIUwHgn+EWnaZe82s9tVViwVumK5xCGXr/GYpuedEC7kkm+FX+WXWbCY++
+         bp5kuCVuDdmPcE0XioK1R+fk2XrY6R1nbZ/dJDf2rOfS71K1ch4KVduQGNPacwSM6JB8
+         S2OidwN8z9ZpZ3NakrjSpIRPZSV96PSc8wR0+M+46OZTJIzWQslK5aADdqjwp8ebRA61
+         6UfuKghSjFEZOOVNUKrN7GNI9vMDrKkS0hvWkI/tmD0EY41vp+CDRtonOFun37fIY5w6
+         35Ow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;        h=mime-version:subject:message-id:to:reply-to:from:date
+         :dkim-signature:dkim-signature;        bh=bcWP7S3S56kcAfxdcCvgTbt71Yxrjd1qN2eSHBUbNss=;
+        fh=H879BI1HmANavun2DoInxX4rJFbGNDij2RXW4Tf28ig=;        b=ezZhZtjAdtxNYgN3ea5ayaiMeelD+ow/LnQ3XHdIjpjRPVCxs2YPGzoFoZzR1ppTT8
+         1R/ywnEcRdyrAy7CvMpcOm+rMdaE3h3ui8MFaPBplvz13QKEWSNvqCh5lU6kPRdjf3iG
+         YaE05zfyGfiyJ2wPp5emzf2c1vCMWezCSmTwRVgaW4M91AN5avUXqm7+XhkOX7bOrJ2C
+         gcrCH2JWul1fCd9PL9hiujgJIY2TKP11PBaMkOGxZJ8rQF7x0hOmr/3i3xJGsSqLNO+0
+         7uTzdHsD+4+sH0LieIZ7a+CbXR+ly0iNkxk1vq6kM/3szjH9TvXgfIPLlfEFRpE4bW0r
+         nT4w==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@udemy.com
+ header.s=m1 header.b=WSwaKMY8;       dkim=pass header.i=@mktdns.com header.s=m1
+ header.b=RrsR84Vz;       spf=pass (google.com: domain of 273-ckq-053.0.90790.0.0.18242.9.82662936-1@marketo-bounce.udemy.com
+ designates 192.28.148.207 as permitted sender) smtp.mailfrom=273-CKQ-053.0.90790.0.0.18242.9.82662936-1@marketo-bounce.udemy.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=udemy.com
+Return-Path: 273-CKQ-053.0.90790.0.0.18242.9.82662936-1@marketo-bounce.udemy.com
+Received: from marketo-bounce.udemy.com (marketo-bounce.udemy.com. [192.28.148.207]) by mx.google.com with ESMTPS id pf4-20020a17090b1d8400b00286f88ca29dsi8474524pjb.36.2023.12.12.10.22.46 for <shivam.gupta@predikly.com> (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128); Tue, 12 Dec 2023 10:22:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of 273-ckq-053.0.90790.0.0.18242.9.82662936-1@marketo-bounce.udemy.com
+ designates 192.28.148.207 as permitted sender) client-ip=192.28.148.207;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@udemy.com
+ header.s=m1 header.b=WSwaKMY8;       dkim=pass header.i=@mktdns.com header.s=m1
+ header.b=RrsR84Vz;       spf=pass (google.com: domain of 273-ckq-053.0.90790.0.0.18242.9.82662936-1@marketo-bounce.udemy.com
+ designates 192.28.148.207 as permitted sender) smtp.mailfrom=273-CKQ-053.0.90790.0.0.18242.9.82662936-1@marketo-bounce.udemy.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=udemy.com
+X-MSFBL: 1FNErugoSFYMOsW3IXv/25mwp71NroW+FpnUApo0OUE=|eyJ1IjoiMjczLUNLUS0	wNTM6MDoyMzM4NzoxMzkyNzg6OToxODI0Mjo5OjkwNzkwOjgyNjYyOTM2LTEiLCJ	yIjoic2hpdmFtLmd1cHRhQHByZWRpa2x5LmNvbSIsImciOiJiZy1zamQtNDc1Iiw	iYiI6ImR2cC0xOTItMjgtMTQ4LTIwNyJ9
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1702405355;
+ s=m1; d=udemy.com; i=@udemy.com; h=Content-Type:MIME-Version:Subject:To:From:Date;
+ bh=bcWP7S3S56kcAfxdcCvgTbt71Yxrjd1qN2eSHBUbNss=; b=WSwaKMY8exzCtbJ3VpSn0r/Zy48arfxUqO7X1PhL/0VX/oWp4RULL1yTO/BzmKzp
+ cyM0NmzmYuwM54O1Y9+SZvwUJ178CuwW/XNP1DBH0N530kfGftFFFJH5N6b/DHCnkes fcVRwHBpI2Z1xZIS5Y0bxcadKhtbhQtX3yeeY6IE=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1702405355;
+ s=m1; d=mktdns.com; i=@mktdns.com; h=Content-Type:MIME-Version:Subject:To:From:Date;
+ bh=bcWP7S3S56kcAfxdcCvgTbt71Yxrjd1qN2eSHBUbNss=; b=RrsR84VzAnngk1nT1wPchyDlTcf32pzyepntiPKhyyuFGz8IoBjN1VxRAXU90//p
+ u/EX2Gef1FDONsyM3NvKQtd+vnL5zk5bvrZmxC0PoGKO5jlmY8yUapAVQml9Tdn8g52 8pU1USEYy54xTwc1iPBJIaNfVo7rRoLopAFTSmd8=
+Date: Tue, 12 Dec 2023 12:22:35 -0600 (CST)
+From: Udemy Business <getintouch@udemy.com>
+Reply-To: getintouch@udemy.com
+To: shivam.gupta@predikly.com
+Message-ID: <1685226278.38301089.1702405355031@sjmktmail-trigger1d.marketo.org>
+Subject: Hi Shivam, we've received your demo request!
+MIME-Version: 1.0
+Content-Type: multipart/alternative;  boundary="----=_Part_38301088_1607374349.1702405355015"
+X-Binding: bg-sjd-475
+X-MarketoID: 273-CKQ-053:0:23387:139278:9:18242:9:90790:82662936-1
+X-Mailfrom: 273-CKQ-053.0.90790.0.0.18242.9.82662936-1@marketo-bounce.udemy.com
+X-MktArchive: false
+X-MSYS-API: {"options":{"open_tracking":false,"click_tracking":false}}
+X-MktMailDKIM: true
+ckx-imap-internaldate: 12-Dec-2023 18:22:46 +0000
+ckx-imap-uid: 11
+ckx-imap-isUid: YES
+ckx-imap-seen: YES
+ckx-imap-answered: NO
+ckx-imap-deleted: NO
+ckx-imap-flagged: NO
+ckx-imap-draft: NO
+ckx-imap-flags: \Seen
+
+------=_Part_38301088_1607374349.1702405355015
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+
+Hi Shivam,
+
+This is to confirm that we have received your demo request.=C2=A0Someone fr=
+om our team will be in touch shortly.
+
+In the meantime,=C2=A0be sure to browse our=C2=A0course collection <https:/=
+/infom.udemy.com/MjczLUNLUS0wNTMAAAGP_jzmAwx-9OdoEhSP5twRMwLKI3FrtGag5FRseb=
+2Y-Flr4H1dDksJL5kT0s-NOkOLrEPC4a4=3D>, which contains=C2=A0thousands of cou=
+rses that we've carefully curated based on customer demand and market trend=
+s.
+
+Feel free to share this list with your team to see which=C2=A0courses they =
+are most excited to take!
+Companies on G2 love using Udemy Business
+We=E2=80=99re thrilled to be named a Leader across several G2 Grid=C2=AE Re=
+port categories! Check out what customers are saying today.=20
+
+------=_Part_38301088_1607374349.1702405355015
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" style=3D"width: 100%;">
+<head>=20
+<!-- Marketo Variable Definitions -->                 =20
+<!-- Other Meta Tags -->=20
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8" />=
+=20
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1,=
+ minimum-scale=3D1, maximum-scale=3D1" />=20
+<meta name=3D"robots" content=3D"noindex,nofollow" />=20
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge" />=20
+<meta name=3D"color-scheme" content=3D"light dark" />=20
+<meta name=3D"supported-color-schemes" content=3D"light dark" />=20
+<link href=3D"https://info.udemy.com/rs/273-CKQ-053/images/SuisseWorks.css"=
+ rel=3D"stylesheet" />=20
+<link href=3D"https://info.udemy.com/rs/273-CKQ-053/images/UdemySans.css" r=
+el=3D"stylesheet" />=20
+<!-- What it does: Makes background images in 72ppi Outlook render at corre=
+ct size. -->=20
+<!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->=20
+<!--[if mso]>
+	<style type=3D'text/css'>
+		.primary-font {
+		font-family: Arial, sans-serif !important;
+		}
+	</style>
+	<![endif]-->=20
+<!--[if mso]>
+	<style type=3D'text/css'>
+		.secondary-font {
+		font-family:  Arial, sans-serif !important;
+		}
+	</style>
+	<![endif]-->=20
+<style>
+		/* What it does: Tells the email client that only light styles are provid=
+ed but the client can transform them to dark. A duplicate of meta color-sch=
+eme meta tag above. */
+        :root {
+          color-scheme: light dark;
+          supported-color-schemes: light dark;
+        }
+	=09
+		/*startcommon*/
+		@media only screen and (max-width: 660px) {
+			table#boxing{
+				width: 100% !important;
+			}
+		}
+		/*endcommon*/
+	</style>=20
+<style media=3D"all">
+		/* CLIENT-SPECIFIC STYLES */
+		#outlook a {
+			padding: 0;
+		}
+		/* Force Outlook to provide a "view in browser" message */
+		.ReadMsgBody {
+			width: 100%;
+		}
+		.ExternalClass {
+			width: 100%;
+		}
+		/* Force Hotmail to display emails at full width */
+		.ExternalClass,
+		.ExternalClass p,
+		.ExternalClass span,
+		.ExternalClass font,
+		.ExternalClass td,
+		.ExternalClass div {
+			line-height: 100%;
+		}
+		/* Force Hotmail to display normal line spacing */
+		/* iOS BLUE LINKS */
+		.appleBody a {
+			color: #000;
+			text-decoration: none;
+		}
+		.appleFooter a {
+			color: #000;
+			text-decoration: none;
+		}
+		@-ms-viewport {
+			width: device-width;
+		}
+	</style>=20
+<style media=3D"all">
+	=09
+		a {
+			text-decoration: none;
+			color: #000000;
+			font-weight: bold;
+			padding-bottom: 1px;
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+			width: fit-content;
+		}
+	=09
+		/* Targets links in Gmail */
+		.ii a[href],
+		.gt a,
+		u + #body .primary-body a {
+			text-decoration: none !important;
+			color: #000000 !important;
+			font-weight: bold !important;
+            padding-bottom: 1px !important;
+			border-bottom-style: solid !important;
+			border-bottom-width: 1px !important;
+			width: fit-content !important;
+		}
+	=09
+		ul {
+			padding: 10px 10px 20px 36px;
+			margin: 0;
+			list-style-type: disc;
+		}
+	=09
+		ul li {
+			margin: 0 0 4px 0px;
+			padding-left: 5px;
+		}
+	=09
+		strong,
+		.m_two-articles a {
+			color: #000000 !important;
+		}
+	=09
+		.m_two-articles .title p,
+		.m_two-articles .text p {
+			margin: 0 !important;
+		}
+
+		.mktoImg a,
+		#udemyLogoLight a,
+		#udemyLogoDark a {
+			border-bottom-width: 0;
+		}
+
+		.footer a {
+			font-weight: normal;
+			border-bottom-width: 0;
+			color: #ffffff !important;
+		}
+	=09
+		@media only screen and (max-width: 660px) {
+
+			/*start tablet*/
+
+			body {
+				width: auto !important;
+			}
+
+			table[class=3D"table600"] {
+				width: 81% !important;
+			}
+
+			table[class=3D"tablefullwidth"] {
+				width: 100% !important;
+			}
+
+			table[class=3D"footer-logo"] {
+				width: 10% !important;
+				text-align: right !important;
+			}
+
+			td[class=3D"outer"] {
+				min-width: 0 !important;
+			}
+
+			td[class=3D"stack"] {
+				padding-bottom: 40px !important;
+			}
+
+			.stack-tablet {
+				padding-bottom: 20px !important;
+				overflow: visible !important;
+				float: none !important;
+				mso-hide: none !important;
+				display: block !important;
+			}
+
+			.stack-tablet2 {
+				padding-bottom: 10px !important;
+				overflow: visible !important;
+				float: none !important;
+				mso-hide: none !important;
+				display: block !important;
+			}
+
+			.divider_width {
+			  width: 81% !important;
+			}
+
+			img[class=3D"mobile-img"] {
+				width: 100% !important;
+				height: auto !important;
+			}
+
+			td[class=3D"center-tablet"] {
+				text-align: center !important;
+			}
+
+			td[class=3D"hide-tablet"] {
+				display: none !important;
+			}
+
+			table[class=3D"footer-column"] {
+				width: 47% !important;
+				text-align: left !important;
+			}
+
+			.m_two-articles .table1-2 {
+				width: 100% !important;
+			}
+
+			.m_two-articles .photo img {
+				width: 100% !important;
+			}
+
+			.m_two-articles .stack-tablet td {
+				height: 60px !important;
+			}
+
+			.m_free-image img {
+				width: 100% !important;
+			}
+
+			/*end tablet*/
+
+		}
+
+		@media only screen and (max-width: 479px) {
+
+			/*start mobile*/
+
+			body {
+				width: auto !important;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+			}
+
+			table[class=3D"table600"] {
+				width: 81% !important;
+			}
+
+			table[class=3D"tablefullwidth"] {
+				width: 100% !important;
+			}
+
+			table[class=3D"footer-logo"] {
+				width: 60% !important;
+				text-align: center !important;
+			}
+
+			td[class=3D"outer"] {
+				width: 100% !important;
+				min-width: 0 !important;
+			}
+
+			td[class=3D"td3-1"] {
+				width: 60% !important;
+				text-align: center !important;
+			}
+
+			.bodycopy {
+
+			}
+		=09
+			.outer {
+				width: 100% !important;
+				min-width: 0 !important;
+			}
+
+			.email_max_width {
+				width: 100% !important;
+			}
+
+			.table600 {
+				width: 81% !important;
+			}
+
+			.divider_width {
+			  width: 81% !important;
+			}
+
+			.stack-smartphone {
+				padding-bottom: 20px !important;
+				overflow: visible !important;
+				float: none !important;
+				display: block !important;
+				mso-hide: none !important;
+			}
+
+			td[class=3D"center-smartphone"] {
+				text-align: center !important;
+			}
+
+			img[class=3D"mobile-img"] {
+				width: 100% !important;
+			}
+
+			img[class=3D"appstore"] {
+				width: 100px !important;
+			}
+
+			img[class=3D"cta_mobile"] {
+				width: 220px !important;
+			}
+
+			td[class=3D"top_spacer"] {
+				height: 0px !important;
+			}
+
+			td[class=3D"center-tablet"] {
+				text-align: center !important;
+			}
+
+			td[class=3D"hide-smartphone"] {
+				display: none !important;
+			}
+
+			table[class=3D"footer-column"] {
+				width: 100% !important;
+				text-align: center !important;
+			}
+
+			.button {
+				font-size: 14px !important;
+				padding-top: 0.7em !important;
+				padding-bottom: 0.7em !important;
+				padding-left: 1.2em !important;
+				padding-right: 1.2em !important;
+			}
+
+			.headline-large-mobile {
+				font-size: 37px !important;=20
+				line-height: 45px !important;
+			}
+
+			.headline-medium-mobile {
+				font-size: 25px !important;=20
+				line-height: 35px !important;
+			}
+
+			.headline-small-mobile {
+				font-size: 22px !important;=20
+				line-height: 26px !important;
+			}
+
+			.headline-xsmall-mobile {
+				font-size: 18px !important;=20
+				line-height: 22px !important;
+			}
+
+			.summary-body-mobile {
+				font-size: 16px !important;=20
+				line-height: 20px !important;
+			}
+
+			.twocol-body-mobile {
+				font-size: 18px !important;
+				line-height: 22px !important;
+			}
+
+			.headline_spacer_top {
+				height: 30px;
+			}
+
+			.headline_spacer_base {
+				height: 20px;
+			}
+
+			.top_spacer {
+				height: 0px;
+			}
+
+			.appstore {
+				width: 100px !important;
+			}
+
+			.m_free-image img {
+				width: 100% !important;
+			}
+
+			.m_hr .table-inner {
+				width: 100% !important;
+			}
+
+		}
+
+		@media (prefers-color-scheme: dark) {
+			/*Shows Dark Mode-Only Content, Like Images*/
+			.dark-img {=20
+				display:block !important;
+				width: auto !important;
+				overflow: visible !important;
+				float: none !important;
+				max-height:inherit !important;
+				max-width:inherit !important;
+				line-height: auto !important;
+				margin-top:0px !important;
+				visibility:inherit !important;
+			}
+
+			/*Hides Light Mode-Only Content, Like Images*/
+			.light-img {=20
+				display:none;
+				display:none !important;
+			}
+
+			/*Custom Dark Mode Background Colors*/
+			.darkmode {
+				background-color: #000000 !important;
+			}
+			.divider.darkmode {
+				border-bottom: 1px solid #ffffff !important;
+			}
+
+			/*Custom Dark Mode Font Colors*/
+			h1, h2, p, span, a, b, strong, .mktoText { color: #ffffff !important; }
+
+			/*Custom Dark Mode Text Link Color*/
+			a,
+			a.button,
+			a.button-text-cta {=20
+				color: #ffffff !important;
+			}
+
+		}
+	=09
+		/*Shows Dark Mode-Only Content, Like Images*/
+		[data-ogsc] .dark-img {=20
+			display: block !important;
+			width: auto !important;
+			overflow: visible !important;
+			float: none !important;
+			max-height: inherit !important;
+			max-width: inherit !important;
+			line-height: auto !important;
+			margin-top: 0px !important;
+			visibility: inherit !important;
+		}
+
+		/*Hides Light Mode-Only Content, Like Images*/
+		[data-ogsc] .light-img {=20
+			display: none;
+			display: none !important;
+		}
+
+		/*Custom Dark Mode Background Color*/
+		[data-ogsc] .darkmode {=20
+			background-color: #000000 !important;
+		}
+		[data-ogsc] .divider.darkmode {=20
+			background-color: #ffffff !important;
+		}
+
+		/*Custom Dark Mode Font Colors*/
+		[data-ogsc] h1,
+		[data-ogsc] h2,
+		[data-ogsc] p,
+		[data-ogsc] span,
+		[data-ogsc] a,
+		[data-ogsc] b,
+		[data-ogsc] strong {=20
+			color: #ffffff !important;
+		}
+
+	</style>=20
+</head>=20
+<body id=3D"body" class=3D"darkmode" style=3D"margin-bottom: 0; -webkit-tex=
+t-size-adjust: 100%; min-width: 100%; margin-top: 0; margin-right: 0; -ms-t=
+ext-size-adjust: 100%; margin-left: 0; padding-top: 40px; padding-right: 0;=
+ padding-bottom: 40px; padding-left: 0; width: 100%; background-color: #e4e=
+5e7;"><style type=3D"text/css">div#emailPreHeader{ display: none !important=
+; }</style><div id=3D"emailPreHeader" style=3D"mso-hide:all; visibility:hid=
+den; opacity:0; color:transparent; mso-line-height-rule:exactly; line-heigh=
+t:0; font-size:0px; overflow:hidden; border-width:0; display:none !importan=
+t;">Success! We have received your demo request, and someone from our team =
+will be in touch shortly.</div>=20
+<div style=3D"display:none; white-space:nowrap; font:15px courier; line-hei=
+ght:0;">
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20
+</div>=20
+<!-- Outer table START -->=20
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" styl=
+e=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-=
+lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: col=
+lapse;">=20
+<tbody>=20
+<tr>=20
+<td class=3D"outer darkmode" valign=3D"top" style=3D"-webkit-text-size-adju=
+st: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspa=
+ce: 0pt; word-break: break-word; -webkit-hyphens: none; -moz-hyphens: none;=
+ hyphens: none; min-width: 600px; border-collapse: collapse; background-col=
+or: #e4e5e7;">=20
+<table class=3D"table600 darkmode" width=3D"660" align=3D"center" id=3D"box=
+ing" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-webkit-text=
+-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt; border-spacing: 0; border-collapse: collapse; background=
+-color: #ffffff;">=20
+<tbody>=20
+<tr>=20
+<td class=3D"mktoContainer boxedbackground" id=3D"template-wrapper" style=
+=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit-hyphens:=
+ none; -moz-hyphens: none; hyphens: none; border-collapse: collapse;">
+<table class=3D"mktoModule headerlogo-image" id=3D"headerlogo-image1" style=
+=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: coll=
+apse;" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td class=3D"darkmode" style=3D"-webkit-text-size-adjust: 100%;-ms-text-siz=
+e-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: brea=
+k-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collap=
+se: collapse;background-color:#ffffff; padding: 22px 0; text-align: center;=
+" bgcolor=3D"#ffffff" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"">=20
+<tbody>=20
+<tr>=20
+<td class=3D"secondary-font text" style=3D"-webkit-text-size-adjust: 100%; =
+-ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; w=
+ord-break: break-word; -webkit-hyphens: none; -moz-hyphens: none; hyphens: =
+none; border-collapse: collapse;">=20
+<div class=3D"mktoImg" id=3D"udemyLogo" mktolockimgsize=3D"true">=20
+<a href=3D
+"https://infom.udemy.com/MjczLUNLUS0wNTMAAAGP_jzmA2Y3UNkuTBp0Ni5etYn4i_NKam=
+Wwl908bbWi3ZL4dI8-ohojfiP_jlZarWmcZA1AtyU=3D" target=3D"_blank"
+> <img class=3D"light-img" src=3D"https://info.udemy.com/rs/273-CKQ-053/ima=
+ges/Udemy_Business_Pos_RGB_M.png" style=3D"-ms-interpolation-mode: bicubic;=
+ outline: none; border-right-width: 0; border-bottom-width: 0; border-left-=
+width: 0; text-decoration: none; border-top-width: 0; max-width: 100%; line=
+-height: 100%; height: auto; width: 272px;" width=3D"272" alt=3D"Udemy Busi=
+ness Logo" /></a>=20
+</div>=20
+<!-- The following Dark Mode logo image is hidden=20
+									with MSO conditional code and inline CSS, but will be        =20
+									revealed once Dark Mode is triggered -->=20
+<!--[if !mso]><! -->=20
+<div class=3D"dark-img" style=3D"display:none; overflow:hidden; float:left;=
+ width:0px; max-height:0px; max-width:0px; line-height:0px; visibility:hidd=
+en;" align=3D"center">=20
+<img src=3D"https://info.udemy.com/rs/273-CKQ-053/images/Udemy_Business_Rev=
+_Black_RGB_M.png" width=3D"272" height=3D"auto" alt=3D"Udemy Business Logo"=
+ border=3D"0" style=3D"height: auto; background: #dddddd; font-family: 'Ude=
+mySans','SF Pro Text', -apple-system, BlinkMacSystemFont, Roboto, 'Segoe UI=
+', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Se=
+goe UI Symbol'; font-size: 15px; line-height: 15px; background: transparent=
+;" />=20
+</div>=20
+<!--<![endif]--> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table class=3D"mktoModule divider-header-top" id=3D"divider-header-topeb89=
+b119-9ab2-45ac-a973-5ff056350d39" style=3D"-webkit-text-size-adjust: 100%; =
+-ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-spacing: 0; border-collapse: collapse;" align=3D"left" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td class=3D"darkmode" style=3D"-webkit-text-size-adjust: 100%;-ms-text-siz=
+e-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: brea=
+k-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collap=
+se: collapse;background-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=
+=20
+<table class=3D"divider_width" style=3D"-webkit-text-size-adjust: 100%; -ms=
+-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; bord=
+er-spacing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto=
+; margin-bottom: 0; margin-left: auto;height: 1px;" align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"560" height=3D"1">=20
+<tbody>=20
+<tr>=20
+<td class=3D"divider darkmode" style=3D"-webkit-text-size-adjust: 100%; -ms=
+-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word=
+-break: break-word; -webkit-hyphens: none; -moz-hyphens: none; hyphens: non=
+e; border-collapse: collapse; font-size:1px; height: 1px; line-height: 1px;=
+ border-bottom: 1px solid #000000;" height=3D"1"></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight: 0;font-size: 0;padding-top: 20px;"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table class=3D"mktoModule primary-body" id=3D"primary-body" style=3D"-webk=
+it-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" al=
+ign=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"10=
+0%">=20
+<tbody>=20
+<tr>=20
+<td class=3D"darkmode" style=3D"-webkit-text-size-adjust: 100%;-ms-text-siz=
+e-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: brea=
+k-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collap=
+se: collapse;background-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=
+=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"560">=20
+<tbody>=20
+<tr>=20
+<td class=3D"headline_spacer" style=3D"-webkit-text-size-adjust: 100%;-ms-t=
+ext-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-brea=
+k: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border=
+-collapse: collapse;line-height:0;font-size:0;height:10px;" height=3D"10px"=
+></td>=20
+</tr>=20
+<tr>=20
+<td data-medium-editor-element=3D"true" align=3D"left" class=3D"secondary-f=
+ont text summary-body-mobile" style=3D"-moz-hyphens: none;-webkit-text-size=
+-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break=
+-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;font-f=
+amily: 'UdemySans', 'SF Pro Text', -apple-system, BlinkMacSystemFont, Robot=
+o, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI=
+ Emoji', 'Segoe UI Symbol';font-size: 20px;line-height: 24px;color: #717171=
+;border-collapse: collapse;">=20
+<div class=3D"mktoText" id=3D"primary-body-text">=20
+<p>Hi Shivam,</p>=20
+<p>This is to confirm that we have received your demo request.&nbsp;Someone=
+ from our team will be in touch shortly.</p>=20
+<p>In the meantime,&nbsp;be sure to browse our&nbsp;<a href=3D
+"https://infom.udemy.com/MjczLUNLUS0wNTMAAAGP_jzmAwx-9OdoEhSP5twRMwLKI3FrtG=
+ag5FRseb2Y-Flr4H1dDksJL5kT0s-NOkOLrEPC4a4=3D" target=3D"_blank" id=3D""
+>course collection</a>, which contains&nbsp;thousands of courses that we've=
+ carefully curated based on customer demand and market trends.</p>=20
+<p>Feel free to share this list with your team to see which&nbsp;courses th=
+ey are most excited to take!</p>=20
+</div> </td>=20
+</tr>=20
+<tr>=20
+<td class=3D"headline_spacer" style=3D"-webkit-text-size-adjust: 100%;-ms-t=
+ext-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-brea=
+k: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border=
+-collapse: collapse;line-height:0;font-size:0;height:10px;" height=3D"10px"=
+></td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table class=3D"mktoModule m_CTA" id=3D"CTA1" style=3D"-webkit-text-size-ad=
+just: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt; border-spacing: 0; border-collapse: collapse;" align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td class=3D"darkmode" style=3D"-webkit-text-size-adjust: 100%;-ms-text-siz=
+e-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: brea=
+k-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collap=
+se: collapse;background-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=
+=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"560">=20
+<tbody>=20
+<tr>=20
+<td class=3D"headline_spacer" style=3D"-webkit-text-size-adjust: 100%;-ms-t=
+ext-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-brea=
+k: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border=
+-collapse: collapse;line-height:0;font-size:0;height:10px;" height=3D"10px"=
+></td>=20
+</tr>=20
+<tr style=3D"outline: medium none;">=20
+<td class=3D"cta" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-ad=
+just: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break=
+-word; -webkit-hyphens: none; -moz-hyphens: none; hyphens: none; border-col=
+lapse: collapse;">=20
+<center>=20
+<table style=3D"border-spacing: 0; border-collapse: collapse; mso-table-lsp=
+ace: -1pt; mso-table-rspace: -1pt;" align=3D"center" cellspacing=3D"0" cell=
+padding=3D"0" border=3D"0">=20
+<tbody>=20
+<tr>=20
+<td style=3D"mso-line-height-rule: exactly;border-collapse: collapse;hyphen=
+s: none;-moz-hyphens: none;-webkit-hyphens: none;word-break: break-word;-mo=
+z-border-radius: 0px;background-clip: padding-box;-webkit-background-clip: =
+padding-box;-moz-background-clip: padding;border-radius: 0px;-webkit-border=
+-radius: 0px;background-color:#A435F0;" align=3D"right" bgcolor=3D"#A435F0"=
+><a class=3D"primary-font button" href=3D
+"https://infom.udemy.com/MjczLUNLUS0wNTMAAAGP_jzmAwx-9OdoEhSP5twRMwLKI3FrtG=
+ag5FRseb2Y-Flr4H1dDksJL5kT0s-NOkOLrEPC4a4=3D" target=3D"_blank" style=3D"bo=
+rder-left-style: solid;font-size: 16px;text-decoration: none;padding-top: 1=
+4px;padding-bottom: 14px;padding-left: 26px;padding-right: 26px;border-top-=
+width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:=
+1px;border-top-style:=20
+solid;border-right-style: solid;border-bottom-style: solid;color: #ffffff;b=
+order-top-color:#A435F0;border-right-color:#A435F0;border-bottom-color:#A43=
+5F0;border-left-color:#A435F0;display: inline-block;-webkit-border-radius: =
+0px;-moz-border-radius: 0px;border-radius: 0px;-moz-background-clip: paddin=
+g;-webkit-background-clip:=20
+padding-box;background-clip: padding-box;font-weight: bold;font-family: 'Ud=
+emySans', 'SF Pro Text', -apple-system, BlinkMacSystemFont, Roboto, 'Segoe =
+UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', '=
+Segoe UI Symbol';background-color:#A435F0;"
+>=20
+<!--[if gte mso 9]>&nbsp;&nbsp;<![endif]-->See Course Collection=20
+<!--[if gte mso 9]>&nbsp;&nbsp;<![endif]--></a></td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center></td>=20
+</tr>=20
+<tr>=20
+<td class=3D"headline_spacer" style=3D"-webkit-text-size-adjust: 100%;-ms-t=
+ext-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-brea=
+k: break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border=
+-collapse: collapse;line-height:0;font-size:0;height:10px;" height=3D"10px"=
+></td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center></td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table class=3D"mktoModule divider-content" id=3D"divider-content-2" style=
+=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: coll=
+apse;" align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" widt=
+h=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td class=3D"darkmode" style=3D"-webkit-text-size-adjust: 100%;-ms-text-siz=
+e-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: brea=
+k-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collap=
+se: collapse;background-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=
+=20
+<table class=3D"divider_width" style=3D"-webkit-text-size-adjust: 100%; -ms=
+-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; bord=
+er-spacing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto=
+; margin-bottom: 0; margin-left: auto;height:1px;" align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"560" height=3D"1">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight:40px;" height=3D"40px"></td>=20
+</tr>=20
+<tr>=20
+<td class=3D"divider darkmode" style=3D"-webkit-text-size-adjust: 100%; -ms=
+-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word=
+-break: break-word; -webkit-hyphens: none; -moz-hyphens: none; hyphens: non=
+e; border-collapse: collapse; font-size:2px; height: 2px; line-height: 2px;=
+ border-bottom: 2px solid #000000;" height=3D"2"></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight:40px;" height=3D"40px"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table class=3D"mktoModule m_two-articles" id=3D"two-articles" acstyle=3D"-=
+webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace=
+: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;=
+" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td class=3D"darkmode" style=3D"-webkit-text-size-adjust: 100%;-ms-text-siz=
+e-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: brea=
+k-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collap=
+se: collapse;background-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=
+=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"560">=20
+<tbody>=20
+<tr>=20
+<td class=3D"" style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust=
+: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-=
+webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: coll=
+apse;line-height:10px;" height=3D"10px"></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e; padding: 10px 0;">=20
+<center>=20
+<table class=3D"table1-2" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" align=3D"left" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" width=3D"270">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e;">=20
+<table class=3D"contents" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0">=20
+<tbody>=20
+<tr>=20
+<td class=3D"photo" style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-=
+adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: bre=
+ak-word; -webkit-hyphens: none; -moz-hyphens: none; hyphens: none; border-c=
+ollapse: collapse;">=20
+<div class=3D"mktoImg" id=3D"aefa11858" mktolockimgsize=3D"true">=20
+<a href=3D"https://www.g2.com/products/udemy-business/reviews#reviews" targ=
+et=3D"_blank"> <img src=3D"https://info.udemy.com/rs/273-CKQ-053/images/Pro=
+duct%20screenshot%20blue%20small%20image.png" style=3D"-ms-interpolation-mo=
+de: bicubic; outline: none; border-right-width: 0; border-bottom-width: 0; =
+border-left-width: 0; text-decoration: none; border-top-width: 0; display: =
+block; max-width: 100%; line-height: 100%; height: auto; width: 270px;" hei=
+ght=3D"auto" width=3D"270" /> </a>=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+<tr class=3D"stack-smartphone stack-tablet2" style=3D"padding-left: 0; over=
+flow: hidden; margin-left: 0; padding-top: 0; padding-right: 0; padding-bot=
+tom: 0; float: left; margin-top: 0; margin-right: 0; margin-bottom: 0; mso-=
+hide: all; display: none;">=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e;">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<table class=3D"table1-2" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" align=3D"right" border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" width=3D"270">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e;">=20
+<table class=3D"contents" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0">=20
+<tbody>=20
+<tr>=20
+<td data-medium-editor-element=3D"true" class=3D"primary-font title twocol-=
+body-mobile" style=3D"-moz-hyphens: none;-webkit-text-size-adjust: 100%;mso=
+-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyp=
+hens: none;-ms-text-size-adjust: 100%;hyphens: none;text-align: left;font-f=
+amily: 'UdemySans', 'SF Pro Text', -apple-system, BlinkMacSystemFont, Robot=
+o, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI=
+ Emoji', 'Segoe UI Symbol';font-size: 20px;line-height: 24px;color: #000000=
+;border-collapse: collapse;font-weight:bold;">=20
+<div class=3D"mktoText" id=3D"articleTitle">=20
+<p>Companies on G2 love using Udemy Business<br /></p>=20
+</div> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight:0px;font-size:0px;" height=3D"20"></td>=20
+</tr>=20
+<tr>=20
+<td data-medium-editor-element=3D"true" class=3D"secondary-font text bodyco=
+py" style=3D"hyphens: none;-webkit-text-size-adjust: 100%;mso-table-lspace:=
+ 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyphens: none;-mo=
+z-hyphens: none;-ms-text-size-adjust: 100%;color: #645A53;text-align: left;=
+font-family: 'UdemySans', 'SF Pro Text', -apple-system, BlinkMacSystemFont,=
+ Roboto, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol';font-size: 16px;line-height: 20px;color: #=
+000000;border-collapse: collapse;">=20
+<div class=3D"mktoText" id=3D"articleText">=20
+<p>We=E2=80=99re thrilled to be named a Leader across several G2 Grid=C2=AE=
+ Report categories! Check out what customers are saying today. <br /></p>=
+=20
+</div> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight:0px;font-size:0px;" height=3D"20"></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"hyphens: none;-webkit-text-size-adjust: 100%;mso-table-lspace:=
+ 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyphens: none;-mo=
+z-hyphens: none;-ms-text-size-adjust: 100%;color: #000000;text-align: left;=
+font-family: 'UdemySans', 'SF Pro Text', -apple-system, BlinkMacSystemFont,=
+ Roboto, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol';font-size: 20px;line-height: 24px;color:#0=
+00000;border-collapse: collapse;" align=3D"left"> <a href=3D"https://www.g2=
+=2Ecom/products/udemy-business/reviews#reviews" target=3D"_blank" class=3D"=
+button-text-cta" style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adju=
+st: 100%;text-decoration: none;color: #000000;font-weight: bold;padding-bot=
+tom: 1px;border-bottom-style: solid;border-bottom-width: 1px;width: fit-con=
+tent;">Learn more</a> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;line-h=
+eight:10px;font-size:10px;" height=3D"10px"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table class=3D"mktoModule spacer-bottom" id=3D"spacer-bottom" style=3D"-we=
+bkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: =
+0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" =
+align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"=
+100%">=20
+<tbody>=20
+<tr>=20
+<td class=3D"darkmode" style=3D"-webkit-text-size-adjust: 100%;-ms-text-siz=
+e-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: brea=
+k-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collap=
+se: collapse;background-color:#ffffff" bgcolor=3D"#ffffff" valign=3D"top">=
+=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"660">=20
+<tbody>=20
+<tr>=20
+<td class=3D"spacerBottom" style=3D"-webkit-text-size-adjust: 100%;-ms-text=
+-size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: =
+break-word;-webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-co=
+llapse: collapse;line-height:0;font-size:0;height:40px;" height=3D"40px"></=
+td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table class=3D"mktoModule footerlogo-image" id=3D"footerlogo-image1" style=
+=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: coll=
+apse;" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse; paddi=
+ng: 22px 0; text-align: center;" valign=3D"top" background=3D"https://info.=
+udemy.com/rs/273-CKQ-053/images/bg-px-black.png" bgcolor=3D"#000000">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"">=20
+<tbody>=20
+<tr>=20
+<td class=3D"secondary-font text" style=3D"-webkit-text-size-adjust: 100%; =
+-ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; w=
+ord-break: break-word; -webkit-hyphens: none; -moz-hyphens: none; hyphens: =
+none; border-collapse: collapse; text-align: center;">=20
+<div class=3D"mktoImg" id=3D"udemyLogoFooter" mktolockimgsize=3D"true">=20
+<a href=3D
+"https://infom.udemy.com/MjczLUNLUS0wNTMAAAGP_jzmA2Y3UNkuTBp0Ni5etYn4i_NKam=
+Wwl908bbWi3ZL4dI8-ohojfiP_jlZarWmcZA1AtyU=3D" target=3D"_blank"
+> <img src=3D"https://info.udemy.com/rs/273-CKQ-053/images/Udemy_Business_R=
+ev_Black_RGB_M.png" style=3D"-ms-interpolation-mode: bicubic; outline: none=
+; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; text=
+-decoration: none; border-top-width: 0; max-width: 100%; line-height: 100%;=
+ height: auto; width: 200px;" width=3D"200" alt=3D"Udemy Business Logo" /><=
+/a>=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<!-- Outer Table END --> =20
+<a href=3D
+"https://infom.udemy.com/MjczLUNLUS0wNTMAAAGP_jzmA6FaAjLckug4pZVSnDJRl8OgiC=
+_6EUXV_z0BxZwj23FaN6Jm7Nbn_dn8GtgCDafUcvc=3D"
+></a>
+<img src=3D"https://infom.udemy.com/trk?t=3D1&mid=3DMjczLUNLUS0wNTMAAAGP_jz=
+mA6VUTVPbDQuBTjytwOygYi1V2wyDy82HJkRtP-puRERS5cBD_tp5n-AFmFXxqX6MUNpj7H3TQE=
+OIXg5dvn4i3q1Rs3L43yC7S5GqphhfYQIlcyqc0Ap0" width=3D"1" height=3D"1" style=
+=3D"display:none !important;" alt=3D"" />
+</body>
+</html>
+------=_Part_38301088_1607374349.1702405355015--

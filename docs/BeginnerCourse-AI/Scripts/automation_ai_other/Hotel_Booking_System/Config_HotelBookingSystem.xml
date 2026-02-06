@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+<email>shivam.gupta@predikly.com</email>
+<weburl>https://www.trivago.in/</weburl>
+<MainPath>C:\Bots\Hotel Management System</MainPath>
+<InputFolder>C:\Bots\Hotel Management System\Input File</InputFolder>
+<LogFolder>C:\Bots\Hotel Management System\Log File</LogFolder>
+<OtherFolder>C:\Bots\Hotel Management System\Other File</OtherFolder>
+<AuditLogFolder>C:\Bots\Hotel Management System\Log File\Audit Log Files</AuditLogFolder>
+<ErrorLogFolder>C:\Bots\Hotel Management System\Log File\Error Log Files</ErrorLogFolder>
+<AuditLogFile>C:\Bots\Hotel Management System\Log File\Audit Log Files\AuditLogFile</AuditLogFile>
+<ErrorLogFile>C:\Bots\Hotel Management System\Log File\Error Log Files\ErrorLogFile</ErrorLogFile>
+</config>

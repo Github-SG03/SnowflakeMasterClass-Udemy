@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+<email>shivam.gupta@predikly.com</email>
+<weburl>https://www.jiomart.com/</weburl>
+<MainPath>C:\Bots\Grocery Order Placement</MainPath>
+<InputFolder>C:\Bots\Grocery Order Placement\Input File</InputFolder>
+<LogFolder>C:\Bots\Grocery Order Placement\Log File</LogFolder>
+<OtherFolder>C:\Bots\Grocery Order Placement\Other File</OtherFolder>
+<AuditLogFolder>C:\Bots\Grocery Order Placement\Log File\Audit Log Files</AuditLogFolder>
+<ErrorLogFolder>C:\Bots\Grocery Order Placement\Log File\Error Log Files</ErrorLogFolder>
+<AuditLogFile>C:\Bots\Grocery Order Placement\Log File\Audit Log Files\AuditLogFile</AuditLogFile>
+<ErrorLogFile>C:\Bots\Grocery Order Placement\Log File\Error Log Files\ErrorLogFile</ErrorLogFile>
+</config>

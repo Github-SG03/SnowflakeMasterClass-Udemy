@@ -1,0 +1,338 @@
+Delivered-To: shivam.gupta@predikly.com
+Received: by 2002:a59:cc52:0:b0:436:b1ac:df54 with SMTP id j18csp3145208vqv; Thu, 14 Dec 2023 12:17:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE/Hd+CILlJP6JRifPhocYZGN+nyYwglzhdezJa6Wifn+DaLlhRKhnTAJiKgqJg1LEx3Glm
+X-Received: by 2002:a05:6870:4714:b0:203:2b71:dad5 with SMTP id b20-20020a056870471400b002032b71dad5mr3851873oaq.8.1702585066247;
+        Thu, 14 Dec 2023 12:17:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702585066; cv=none;        d=google.com;
+ s=arc-20160816;        b=jlLbqof8NYFp2s+ya5oQePtLvMQ9aKYd6Oy8PLVMbR54c7g0KSlgrmLw8KxXtHv5qq
+         HvJ7ODxAfj3yR/LATSJulELZHDuhgARs2/qJqqyRdFkyukcNj6bd1EJcwAtPZqpDyzAo
+         h8EIC/4SLyhuf67oD/DgubbOkIj6m5kNdAYwRwvrHpC3QQrlQ29X5PGNXM44GwuQej92
+         NSe5yoivP+cg7KjCQ2pEG/CGwQ+f+mBMeZNNrIiq5CvWjWowtKL+4tvwu2kJCHZAHjpa
+         L5zq5CzCwdkjZI+TJuIbSVafRETryD8Q2/yKA48GCm8NbvatOYat+EZtvykJ/l6kwYnO
+         VWJw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;        h=to:subject:message-id:date:mime-version:references:in-reply-to:from
+         :dkim-signature;        bh=X5z+WCG8hX3vFtrA2JB9la8HuNDfHQcJuOccLbt8/Ak=;
+        fh=+SUsMWr+IEGXqLG30z9j+xXQFqZjO9cVx6wZCPa/EI4=;        b=FEo0Fl2J9iU5sthZJ1ZQFiNXfmvwNg6Qq4ra35HwaOzxJGk0dE3ggTuj40EDfb3hlG
+         TSrz2nA1LFJXT4LPE9wfFM7SYD80a2w47Rmogela8UrjOoCIlS50/b+3cv4p9RPnu/v/
+         761WVknfL21xvTZk9Zts6eRq28vLbmF4OgMz5K7hafkn4KOyatPC+Duh8K3YbXpg9TjF
+         ZmgrfZSmIzjZ1RNI5uKZycHx87HbjjtMwxgbHYRM44AuxLNQ1BBNSZx5QAuHG/Vzxur+
+         1w6Pcxg3Pp2hiyEh3axdNFGJxI1RUtb/0l3Og5VlxGsjKC3a8JixBN8ytZQ5yM4984f6
+         YQ0g==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@udemy.com
+ header.s=google header.b=CUMLcE1z;       spf=pass (google.com: domain
+ of meghan.nolan@udemy.com designates 2607:f8b0:4864:20::335 as permitted
+ sender) smtp.mailfrom=meghan.nolan@udemy.com;       dmarc=pass (p=REJECT
+ sp=REJECT dis=NONE) header.from=udemy.com
+Return-Path: meghan.nolan@udemy.com
+Received: from mail-ot1-x335.google.com (mail-ot1-x335.google.com. [2607:f8b0:4864:20::335]) by mx.google.com with ESMTPS id pn26-20020a0568704d1a00b001fb2f949ff1si307762oab.335.2023.12.14.12.17.45 for <shivam.gupta@predikly.com> (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128); Thu, 14 Dec 2023 12:17:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of meghan.nolan@udemy.com designates
+ 2607:f8b0:4864:20::335 as permitted sender) client-ip=2607:f8b0:4864:20::335;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@udemy.com
+ header.s=google header.b=CUMLcE1z;       spf=pass (google.com: domain
+ of meghan.nolan@udemy.com designates 2607:f8b0:4864:20::335 as permitted
+ sender) smtp.mailfrom=meghan.nolan@udemy.com;       dmarc=pass (p=REJECT
+ sp=REJECT dis=NONE) header.from=udemy.com
+Received: by mail-ot1-x335.google.com with SMTP id 46e09a7af769-6da3a585c29so1461350a34.1 for <shivam.gupta@predikly.com>; Thu, 14 Dec 2023 12:17:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=udemy.com; s=google;
+ t=1702585065; x=1703189865; darn=predikly.com; h=to:subject:message-id:date:mime-version:references:in-reply-to:from
+ :from:to:cc:subject:date:message-id:reply-to; bh=X5z+WCG8hX3vFtrA2JB9la8HuNDfHQcJuOccLbt8/Ak=;
+ b=CUMLcE1zbpNPli4UsE85eFzfA2gMmWIliOFbp2x/ZjcIaVhqPreat8eisZwtn9VzhU e2lxQXMqUcpArGGg3S78MlGTikVNQW8oYga3XforzoNLWCztjasgbpRUyKIujBVVugxb
+ Gtzoc4YHp5g5qfrh+dW8rWGGDGNZYFiUnmi1Y=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;       
+ d=1e100.net; s=20230601; t=1702585065; x=1703189865;        h=to:subject:message-id:date:mime-version:references:in-reply-to:from
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=X5z+WCG8hX3vFtrA2JB9la8HuNDfHQcJuOccLbt8/Ak=;        b=YlPRwXDPY6Cio2yEtuglFrtsEBjl/2Ssi1Cze+BlEulF4mK5pzGRTfRf2krJp8R4i0
+         OxFzuJKIMdz8NqGCSUgRLC1KyPoZQKB1BbPJkIsRv0GerLbmZK3EgfbiAgC3cEhU2Z/3
+         nrVac5HtXlnZbz+6zsqTbVT5wO9DIVcz5Ci7+75lKmu8/j3xo8tohD92YuAsFtVGCS+G
+         qf3ap3/3/ghgCuG99/LkhHlXOW0+h4rjisnXnknPUCrh8O3TC519FBOfK1KkcYMt3Sx3
+         NY93wCIIcqI7W5smpH51BNvy00Oxq8hdxmetnyWu4EEZmjsZOH1FSBpxtkdaDcWP5VLx
+         Hjog==
+X-Gm-Message-State: AOJu0YxVBW1mrUY0YJVAH2cstCEe4jvxSYuUKF0CPNK/dEq1K/Z/VkgA	3JfcQs3xZpbemWfV7u7DnD+rKERQBRUL6aHffFhvtJ8CW8YWjPbZ
+X-Received: by 2002:a05:6830:1e38:b0:6d8:7ded:6cc5 with SMTP id t24-20020a0568301e3800b006d87ded6cc5mr10942906otr.41.1702585065392;
+ Thu, 14 Dec 2023 12:17:45 -0800 (PST)
+Received: from 300935273661 named unknown by gmailapi.google.com with HTTPREST; Thu, 14 Dec 2023 12:17:44 -0800
+From: Meghan Nolan <meghan.nolan@udemy.com>
+In-Reply-To: <CA+MbzGKmgOVzdL3T5Uu0hSokA+2V8SFALDh_S7w_5-i9=Y4CLA@mail.gmail.com>
+References: <CA+MbzGKmgOVzdL3T5Uu0hSokA+2V8SFALDh_S7w_5-i9=Y4CLA@mail.gmail.com>
+Mime-Version: 1.0
+Date: Thu, 14 Dec 2023 12:17:44 -0800
+Message-ID: <CA+MbzGKFXSjFjXtV2FTBb2-+wppQCzK_Q9efLcZPr1XdpevYbQ@mail.gmail.com>
+Subject: =?utf-8?B?UmU6IFRoYW5rcyBmb3IgcmVhY2hpbmcgb3V0LCBTaGl2YW0hIExldOKAmXMgY2hhdCBuZXh0IHN0ZXBzIQ==?=
+To: "Shivam Gupta" <shivam.gupta@predikly.com>
+Content-Type: multipart/alternative; boundary=00000000000005ea8d060c7dfaee
+ckx-imap-internaldate: 14-Dec-2023 20:17:46 +0000
+ckx-imap-uid: 15
+ckx-imap-isUid: YES
+ckx-imap-seen: YES
+ckx-imap-answered: NO
+ckx-imap-deleted: NO
+ckx-imap-flagged: NO
+ckx-imap-draft: NO
+ckx-imap-flags: \Seen
+
+--00000000000005ea8d060c7dfaee
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+
+Hi there Shivam,
+
+I look forward to our conversation about your training needs and what
+you=E2=80=99re looking for in an E-learning solution.
+
+To ensure we get some time to discuss and keep this as a top priority,
+would you mind confirming some times to meet Friday or Monday? Book a
+meeting with Meghan Nolan
+<https://sl.udemy.com/t/11126/c/13acb757-c2ae-42e2-ba43-c1011efb7423/NB2HI4=
+DTHIXS63LFMV2GS3THOMXHGYLMMVZWY33GOQXGG33NF52WIZLNPEXW2ZLHNBQW43TPNRQW4P3NM=
+VSXI2LOM5PWIZLUMFUWYPJSMM3WCYRXHBRC2ZTCG5RS2NBVMU3C2ODCGBRC2OBVGEYDOZLBMNQW=
+CMRZEZYV63LBNFWGS3THL43VIWSUKBITSTLPOBGDGVLSKF3WOU2SORXHQ22UM5SFM4LKOFIHQ4T=
+TNVVTKPKSNZ2VORSINVMTSRLVJVDGMNBYJBIDI4TPMVGUEOLIKBAXKUKTIJ4GI5TQIZJHMZSFMR=
+KXEZCVPJTXKNJXNJZWOYKNNY=3D=3D=3D=3D=3D=3D/meetings-salesloft-com-udemy-meg=
+hannolan>
+
+Chat soon,
+
+Meghan
+
+*Meghan Nolan*
+
+Sales Development Representative
+
+*Meghan.Nolan@Udemy.com
+<Meghan.Nolan@Udemy.com?q_mailing_7TZTPQ9MopL3UrQwgSRtnxkTgdVqjqPxrsmk5=3DR=
+nuWFHmY9EuMFf48HP4roeMB9hPAuQSBxdvpFRvfEdUrdUzgu57jsgaMn>*
+| +17204087253
+
+
+
+Would you like to opt out?
+<https://sl.udemy.com/t/11126/opt_out/13acb757-c2ae-42e2-ba43-c1011efb7423>
+
+On Dec 12, 2023 11:33 AM, "Meghan Nolan" <meghan.nolan@udemy.com
+<meghan.nolan@udemy.com?q_mailing_7TZTPQ9MopL3UrQwgSRtnxkTgdVqjqPxrsmk5=3DR=
+nuWFHmY9EuMFf48HP4roeMB9hPAuQSBxdvpFRvfEdUrdUzgu57jsgaMn>>
+wrote:
+
+> Hi Shivam,
+>
+> I am thrilled to explore Udemy Business further with you. Do you have tim=
+e
+> this week to get on a brief call? Let=E2=80=99s start working toward crea=
+ting a
+> tailored E-learning experience for Predikly.
+>
+> Book a slot on my calendar at your convenience: Book a meeting with
+> Meghan Nolan
+> <https://sl.udemy.com/t/11126/c/13acb757-c2ae-42e2-ba43-c1011efb7423/NB2H=
+I4DTHIXS63LFMV2GS3THOMXHGYLMMVZWY33GOQXGG33NF52WIZLNPEXW2ZLHNBQW43TPNRQW4P3=
+NMVSXI2LOM5PWIZLUMFUWYPJSMM3WCYRXHBRC2ZTCG5RS2NBVMU3C2ODCGBRC2OBVGEYDOZLBMN=
+QWCMRZEZYV63LBNFWGS3THL43VIWSUKBITSTLPOBGDGVLSKF3WOU2SORXHQ22UM5SFM4LKOFIHQ=
+4TTNVVTKPKSNZ2VORSINVMTSRLVJVDGMNBYJBIDI4TPMVGUEOLIKBAXKUKTIJ4GI5TQIZJHMZSF=
+MRKXEZCVPJTXKNJXNJZWOYKNNY=3D=3D=3D=3D=3D=3D/meetings-salesloft-com-udemy-m=
+eghannolan>
+>
+>
+> I am looking forward to partnering alongside your organization=E2=80=99s =
+training
+> growth!
+>
+> Best,
+>
+> Meghan
+>
+> *Meghan Nolan*
+>
+> Sales Development Representative
+>
+> *Meghan.Nolan@Udemy.com
+> <Meghan.Nolan@Udemy.com?q_mailing_7TZTPQ9MopL3UrQwgSRtnxkTgdVqjqPxrsmk5=
+=3DRnuWFHmY9EuMFf48HP4roeMB9hPAuQSBxdvpFRvfEdUrdUzgu57jsgaMn>*
+> | +17204087253
+>
+>
+>
+> Would you like to opt out?
+> <https://sl.udemy.com/t/11126/opt_out/13acb757-c2ae-42e2-ba43-c1011efb742=
+3>
+>
+
+--00000000000005ea8d060c7dfaee
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<div style=3D"font-family:Arial,Helvetica,sans-serif;font-size:13.333333px"=
+><div class=3D"sales_loft_wrapper" style=3D"font-family:Arial,Helvetica,san=
+s-serif;font-size:10pt">
+<div style=3D"font-family:Arial,Helvetica,sans-serif;font-size:13.333333px"=
+>
+<div>
+<p><span style=3D"font-weight:400">Hi there Shivam,</span></p>
+<p><span style=3D"font-weight:400">I look forward to our conversation about=
+ your training needs and what you=E2=80=99re looking for in an E-learning s=
+olution.</span></p>
+<p><span style=3D"font-weight:400">To ensure we get some time to discuss an=
+d keep this as a top priority, would you mind confirming some times to meet=
+ Friday or Monday? <a href=3D"https://sl.udemy.com/t/11126/c/13acb757-c2ae-=
+42e2-ba43-c1011efb7423/NB2HI4DTHIXS63LFMV2GS3THOMXHGYLMMVZWY33GOQXGG33NF52W=
+IZLNPEXW2ZLHNBQW43TPNRQW4P3NMVSXI2LOM5PWIZLUMFUWYPJSMM3WCYRXHBRC2ZTCG5RS2NB=
+VMU3C2ODCGBRC2OBVGEYDOZLBMNQWCMRZEZYV63LBNFWGS3THL43VIWSUKBITSTLPOBGDGVLSKF=
+3WOU2SORXHQ22UM5SFM4LKOFIHQ4TTNVVTKPKSNZ2VORSINVMTSRLVJVDGMNBYJBIDI4TPMVGUE=
+OLIKBAXKUKTIJ4GI5TQIZJHMZSFMRKXEZCVPJTXKNJXNJZWOYKNNY=3D=3D=3D=3D=3D=3D/mee=
+tings-salesloft-com-udemy-meghannolan" target=3D"_blank" rel=3D"noopener">B=
+ook a meeting with Meghan Nolan</a></span></p>
+<p><span style=3D"font-weight:400">Chat soon,</span></p>
+<p><span style=3D"font-weight:400">Meghan</span></p>
+</div>
+<div class=3D"sl-signature">
+<div class=3D"sales_loft_wrapper" style=3D"font-family:Arial,Helvetica,sans=
+-serif;font-size:10pt">
+<table width=3D"470">
+<tbody>
+<tr>
+<td>
+<table width=3D"470">
+<tbody>
+<tr>
+<td>
+<table style=3D"height:131px" width=3D"296">
+<tbody>
+<tr>
+<td>
+<p dir=3D"ltr"><img src=3D"https://lh6.googleusercontent.com/zf84wmNjxNH8Oy=
+xHCO2UuIDMU2vkWdLut2LVmffCZcBC1I3u-E3YW6RpKNT-x1rMVX6KDodH2VtdNJbQLJLHX7Obe=
+3dwRMyBV8-eaJA0krRpDepHWNeCegsKJ9RJp4u1tCZm73oD8QUJFplnrXnbCw" width=3D"88"=
+ height=3D"45"></p>
+<table style=3D"height:82px" width=3D"295">
+<tbody>
+<tr>
+<td>
+<p dir=3D"ltr"><span style=3D"color:#000000;font-family:Open Sans,sans-seri=
+f"><span><b>Meghan Nolan</b></span></span></p>
+<p dir=3D"ltr"><span>Sales Development Representative</span></p>
+<p dir=3D"ltr"><span><span style=3D"color:#a435f0"><u><a href=3D"mailto:Meg=
+han.Nolan@Udemy.com?q_mailing_7TZTPQ9MopL3UrQwgSRtnxkTgdVqjqPxrsmk5=3DRnuWF=
+HmY9EuMFf48HP4roeMB9hPAuQSBxdvpFRvfEdUrdUzgu57jsgaMn" target=3D"_blank" rel=
+=3D"noopener">Meghan.Nolan@Udemy.com</a></u> |</span><span style=3D"color:#=
+9900ff"> +17204087253</span></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>=C2=A0</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>=C2=A0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br><br>
+<div class=3D"sl-email-footer mceNonEditable"><a class=3D"sl_opt_out_link_c=
+lass" href=3D"https://sl.udemy.com/t/11126/opt_out/13acb757-c2ae-42e2-ba43-=
+c1011efb7423">Would you like to opt out?</a></div>
+<br>
+<div class=3D"gmail_quote sl-previous-email">On Dec 12, 2023 11:33 AM, &quo=
+t;Meghan Nolan&quot; &lt;<a href=3D"mailto:meghan.nolan@udemy.com?q_mailing=
+_7TZTPQ9MopL3UrQwgSRtnxkTgdVqjqPxrsmk5=3DRnuWFHmY9EuMFf48HP4roeMB9hPAuQSBxd=
+vpFRvfEdUrdUzgu57jsgaMn">meghan.nolan@udemy.com</a>&gt; wrote:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex">
+<div style=3D"font-family:Arial,Helvetica,sans-serif;font-size:13.333333px"=
+>
+<div class=3D"sales_loft_wrapper" style=3D"font-family:Arial,Helvetica,sans=
+-serif;font-size:10pt">
+<div style=3D"font-family:Arial,Helvetica,sans-serif;font-size:13.333333px"=
+>
+<div style=3D"font-family:Arial,Helvetica,sans-serif;font-size:10pt">
+<p><span style=3D"font-weight:400">Hi Shivam,</span></p>
+<p><span style=3D"font-weight:400">I am thrilled to explore Udemy Business =
+further with you. Do you have time this week to get on a brief call? Let=E2=
+=80=99s start working toward creating a tailored E-learning experience for =
+Predikly.=C2=A0</span></p>
+<p><span style=3D"font-weight:400">Book a slot on my calendar at your conve=
+nience: <a href=3D"https://sl.udemy.com/t/11126/c/13acb757-c2ae-42e2-ba43-c=
+1011efb7423/NB2HI4DTHIXS63LFMV2GS3THOMXHGYLMMVZWY33GOQXGG33NF52WIZLNPEXW2ZL=
+HNBQW43TPNRQW4P3NMVSXI2LOM5PWIZLUMFUWYPJSMM3WCYRXHBRC2ZTCG5RS2NBVMU3C2ODCGB=
+RC2OBVGEYDOZLBMNQWCMRZEZYV63LBNFWGS3THL43VIWSUKBITSTLPOBGDGVLSKF3WOU2SORXHQ=
+22UM5SFM4LKOFIHQ4TTNVVTKPKSNZ2VORSINVMTSRLVJVDGMNBYJBIDI4TPMVGUEOLIKBAXKUKT=
+IJ4GI5TQIZJHMZSFMRKXEZCVPJTXKNJXNJZWOYKNNY=3D=3D=3D=3D=3D=3D/meetings-sales=
+loft-com-udemy-meghannolan" target=3D"_blank" rel=3D"noopener">Book a meeti=
+ng with Meghan Nolan</a>=C2=A0</span></p>
+<p><span style=3D"font-weight:400">I am looking forward to partnering along=
+side your organization=E2=80=99s training growth!</span></p>
+<p><span style=3D"font-weight:400">Best,</span></p>
+<p><span style=3D"font-weight:400">Meghan</span></p>
+</div>
+<div class=3D"sl-signature">
+<div>
+<table width=3D"470">
+<tbody>
+<tr>
+<td>
+<table width=3D"470">
+<tbody>
+<tr>
+<td>
+<table style=3D"height:131px" width=3D"296">
+<tbody>
+<tr>
+<td>
+<p dir=3D"ltr"><img src=3D"https://lh6.googleusercontent.com/zf84wmNjxNH8Oy=
+xHCO2UuIDMU2vkWdLut2LVmffCZcBC1I3u-E3YW6RpKNT-x1rMVX6KDodH2VtdNJbQLJLHX7Obe=
+3dwRMyBV8-eaJA0krRpDepHWNeCegsKJ9RJp4u1tCZm73oD8QUJFplnrXnbCw" width=3D"88"=
+ height=3D"45"></p>
+<table style=3D"height:82px" width=3D"295">
+<tbody>
+<tr>
+<td>
+<p dir=3D"ltr"><span style=3D"color:#000000;font-family:Open Sans,sans-seri=
+f"><span><b>Meghan Nolan</b></span></span></p>
+<p dir=3D"ltr"><span>Sales Development Representative</span></p>
+<p dir=3D"ltr"><span><span style=3D"color:#a435f0"><u><a href=3D"mailto:Meg=
+han.Nolan@Udemy.com?q_mailing_7TZTPQ9MopL3UrQwgSRtnxkTgdVqjqPxrsmk5=3DRnuWF=
+HmY9EuMFf48HP4roeMB9hPAuQSBxdvpFRvfEdUrdUzgu57jsgaMn" target=3D"_blank" rel=
+=3D"noopener">Meghan.Nolan@Udemy.com</a></u> |</span><span style=3D"color:#=
+9900ff"> +17204087253</span></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>=C2=A0</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>=C2=A0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br><br>
+<div class=3D"sl-previous-email-footer mceNonEditable"><a class=3D"sl_previ=
+ous_link_class" href=3D"https://sl.udemy.com/t/11126/opt_out/13acb757-c2ae-=
+42e2-ba43-c1011efb7423">Would you like to opt out?</a></div>
+</div>
+</div>
+</div>
+</blockquote>
+</div>
+</div>
+</div></div><img src=3D"https://sl.udemy.com/t/11126/open/13acb757-c2ae-42e=
+2-ba43-c1011efb7423.gif" alt=3D"" width=3D"1" height=3D"1">
+
+--00000000000005ea8d060c7dfaee--

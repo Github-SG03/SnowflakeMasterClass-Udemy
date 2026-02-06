@@ -1,0 +1,1013 @@
+Delivered-To: shivam.gupta@predikly.com
+Received: by 2002:a59:cc52:0:b0:436:b1ac:df54 with SMTP id j18csp734813vqv; Mon, 11 Dec 2023 01:52:38 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE9GcgSVSL3ACXskAh5oWrSs6+04iz4I83ZARfG9H1SaZAIajFz8LMgMEnAOIxC4lbo94mo
+X-Received: by 2002:a17:90a:3da7:b0:286:6cc0:cac6 with SMTP id i36-20020a17090a3da700b002866cc0cac6mr2842227pjc.61.1702288358452;
+        Mon, 11 Dec 2023 01:52:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1702288358; cv=none;        d=google.com;
+ s=arc-20160816;        b=k5hJNt5HYZQzuE/nstjtNUR0EvnltLzXfAfLSv/FkQ1eVMtKwJYq7hcyLacExXMDT5
+         4keSgtNgrNvZ2MkzXSBVr1Zex6FyGOyyWuqNN5gCNKzNqyuJwfhFc3gsa7MS4ZX3sC/r
+         EDHA8h2HsFgYj++6s4R1uWjvazxVMzTwm0XDJGosN6HWM8vYFa2hkd5f4SN1Sn7VzRpd
+         NFK225mGEOPjlmVC/aukY/7K5Nq6bqQ8Zh+Y777eBY6XsJaG4jYxOS5cNvj/sSseEyEH
+         xE4iZpfYcxCzNoIqopbHlSPrawvDMit5hP9sUzu43zlth3Ue4GPqwFkGNHbXtjmnPr0W
+         F8jw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;        h=feedback-id:mime-version:to:message-id:subject:date:from
+         :dkim-signature:dkim-signature;        bh=JbHEV3iK9lqVTKszYx4Mv7OFyvEJTZ6bmDxAkL6aga0=;
+        fh=+SUsMWr+IEGXqLG30z9j+xXQFqZjO9cVx6wZCPa/EI4=;        b=VnoXM0U9bYZss+uOA7yHMJ834RWelm1ZRC9+RrA6I9hph2YQoY6Y7W0oP/1bdEez2F
+         XF//evYbWJNmfWGa2rq2tqWwpu63Lbl1aqCC/kuOWcStXmb1bq2ZYc1LS3XvO6N4mL3l
+         OQCwYmg2v3ruR8WuNO3CS4W810oab7MUyKp7FCRHdYgCj2CbV38sywrFsFPld8P6IuLW
+         CMYjFtNyZq3QZFANdcsaFcUjHrSpHjF0ilP4dD1BRoGro1FnebxI9fAIi1eMl2tdAkbB
+         Cgi8AXOrCfVjr1HhFgSBzNGSkUBQo6K5pFVk5fmGthQPoTVFaqu4jI5i0D9VOqGNXl3i
+         r8eg==
+ARC-Authentication-Results: i=1; mx.google.com;       dkim=pass header.i=@kekamail.com
+ header.s=ujbyk6obkcwlnlh55foiemwvlt4zawlg header.b=C2GkYu7Q;       dkim=pass
+ header.i=@amazonses.com header.s=hsbnp7p3ensaochzwyq5wwmceodymuwv header.b=o+LKzAaq;
+       spf=pass (google.com: domain of 0101018c584af8aa-6966d9b4-4605-44c1-b3d7-3d21467dc878-000000@us-west-2.amazonses.com
+ designates 54.240.86.172 as permitted sender) smtp.mailfrom=0101018c584af8aa-6966d9b4-4605-44c1-b3d7-3d21467dc878-000000@us-west-2.amazonses.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kekamail.com
+Return-Path: 0101018c584af8aa-6966d9b4-4605-44c1-b3d7-3d21467dc878-000000@us-west-2.amazonses.com
+Received: from a86-172.smtp-out.us-west-2.amazonses.com (a86-172.smtp-out.us-west-2.amazonses.com. [54.240.86.172]) by mx.google.com with ESMTPS id x3-20020a170902fe8300b001d08cfd46absi5944316plm.372.2023.12.11.01.52.38 for <shivam.gupta@predikly.com> (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128); Mon, 11 Dec 2023 01:52:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of 0101018c584af8aa-6966d9b4-4605-44c1-b3d7-3d21467dc878-000000@us-west-2.amazonses.com
+ designates 54.240.86.172 as permitted sender) client-ip=54.240.86.172;
+Authentication-Results: mx.google.com;       dkim=pass header.i=@kekamail.com
+ header.s=ujbyk6obkcwlnlh55foiemwvlt4zawlg header.b=C2GkYu7Q;       dkim=pass
+ header.i=@amazonses.com header.s=hsbnp7p3ensaochzwyq5wwmceodymuwv header.b=o+LKzAaq;
+       spf=pass (google.com: domain of 0101018c584af8aa-6966d9b4-4605-44c1-b3d7-3d21467dc878-000000@us-west-2.amazonses.com
+ designates 54.240.86.172 as permitted sender) smtp.mailfrom=0101018c584af8aa-6966d9b4-4605-44c1-b3d7-3d21467dc878-000000@us-west-2.amazonses.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kekamail.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=ujbyk6obkcwlnlh55foiemwvlt4zawlg;
+ d=kekamail.com; t=1702288357; h=From:Date:Subject:Message-Id:To:MIME-Version:Content-Type;
+ bh=4s573YpoAt22TiCCr52k1m6UI4ljtjQO/l6+wRGB410=; b=C2GkYu7QKFW6mdHzoF9vgnCrkdLyAQiJ6LXAGBVQOKpk8jOthHZ8qsKF8K7Rsy99
+ Yp0GIOZadwbAq3OvtbEfeaMtr5z4ZZZHyRkzd2gCWbVS8QxcR+xWebr3XKwiyKnSuzf hT/V8G0Otk9SPx8jZA4P8oDD3sWdy9qa8ToGUMSYXlsKqImHV+ZkHaOk7xlxaxoVG7H
+ WmrRCYb9+LiuhyQWPQNQEDuIYVehq3JxIyDQ3cYzSsG25pseHgP40xjbn7jY56Cw8z/ kZjInb7OJWGvloFJ9ix8I3iL79mVlL68E/qoVUZ5gHfcZmoPGIHn53NerqL5qNXqllI
+ GT+jYrx7uA==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=hsbnp7p3ensaochzwyq5wwmceodymuwv;
+ d=amazonses.com; t=1702288357; h=From:Date:Subject:Message-Id:To:MIME-Version:Content-Type:Feedback-ID;
+ bh=4s573YpoAt22TiCCr52k1m6UI4ljtjQO/l6+wRGB410=; b=o+LKzAaqGKk4DdaApAuSskwIqhdEERTdBkjFtau8+uFmVxFED89cGFMREUbpbzi7
+ lakpvZnYMdMTI+DGcDO1d757K5inDvirQu/+sAwzzuI89uY+JFeDtZ91ZWQfZrYXQ+7 9ob+BOMas/6se1YnyXU0UTaeTM8UVLq2RGS5IVlY=
+From: Predikly Technologies <no-reply@kekamail.com>
+Date: Mon, 11 Dec 2023 09:52:37 +0000
+Subject: Invitation to join Predikly Technologies HR Portal!
+Message-ID: <0101018c584af8aa-6966d9b4-4605-44c1-b3d7-3d21467dc878-000000@us-west-2.amazonses.com>
+To: "Shivam Gupta" <shivam.gupta@predikly.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Feedback-ID: 1.us-west-2.5iF66qRRvKJowRQdCbD6Z3+m2unXQpglJlT+wP1M24U=:AmazonSES
+X-SES-Outgoing: 2023.12.11-54.240.86.172
+ckx-imap-internaldate: 11-Dec-2023 09:52:38 +0000
+ckx-imap-uid: 3
+ckx-imap-isUid: YES
+ckx-imap-seen: YES
+ckx-imap-answered: NO
+ckx-imap-deleted: NO
+ckx-imap-flagged: NO
+ckx-imap-draft: NO
+ckx-imap-flags: \Seen
+
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+    <!-- NAME: 1 COLUMN -->
+    <!--[if gte mso 15]>
+		<xml>
+			<o:OfficeDocumentSettings>
+			<o:AllowPNG/>
+			<o:PixelsPerInch>96</o:PixelsPerInch>
+			</o:OfficeDocumentSettings>
+		</xml>
+		<![endif]-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Invitation to join Predikly Technologies HR Portal!</title>
+
+    <style type="text/css">
+        p {
+            margin: 10px 0;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+        
+        img,
+        a img {
+            border: 0;
+            height: auto;
+            outline: none;
+            text-decoration: none;
+        }
+        
+        body,
+        #bodyTable,
+        #bodyCell {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        #outlook a {
+            padding: 0;
+        }
+        
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+        
+        table {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        
+        .ReadMsgBody {
+            width: 100%;
+        }
+        
+        .ExternalClass {
+            width: 100%;
+        }
+        
+        p,
+        a,
+        li,
+        td,
+        blockquote {
+            mso-line-height-rule: exactly;
+        }
+        
+        a[href^=tel],
+        a[href^=sms] {
+            color: inherit;
+            cursor: default;
+            text-decoration: none;
+        }
+        
+        p,
+        a,
+        li,
+        td,
+        body,
+        table,
+        blockquote {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass td,
+        .ExternalClass div,
+        .ExternalClass span,
+        .ExternalClass font {
+            line-height: 100%;
+        }
+        
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+        
+        #bodyCell {
+            padding: 10px;
+        }
+        
+        .templateContainer {
+            max-width: 600px !important;
+        }
+        
+        a.mcnButton {
+            display: block;
+        }
+        
+        .mcnImage {
+            vertical-align: bottom;
+        }
+        
+        .mcnTextContent {
+            word-break: break-word;
+        }
+        
+        .mcnTextContent img {
+            height: auto !important;
+        }
+        
+        .mcnDividerBlock {
+            table-layout: fixed !important;
+        }
+        /*
+	@tab Page
+	@section Background Style
+	@tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
+	*/
+        
+        body,
+        #bodyTable {
+            /*@editable*/
+            background-color: #f4f4f4;
+        }
+        /*
+	@tab Page
+	@section Background Style
+	@tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
+	*/
+        
+        #bodyCell {
+            /*@editable*/
+            border-top: 0;
+        }
+        /*
+	@tab Page
+	@section Email Border
+	@tip Set the border for your email.
+	*/
+        
+        .templateContainer {
+            /*@editable*/
+            border: 0;
+        }
+        /*
+	@tab Page
+	@section Heading 1
+	@tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
+	@style heading 1
+	*/
+        
+        h1 {
+            /*@editable*/
+            color: #202020;
+            /*@editable*/
+            font-family: Helvetica;
+            /*@editable*/
+            font-size: 26px;
+            /*@editable*/
+            font-style: normal;
+            /*@editable*/
+            font-weight: bold;
+            /*@editable*/
+            line-height: 125%;
+            /*@editable*/
+            letter-spacing: normal;
+            /*@editable*/
+            text-align: left;
+        }
+        /*
+	@tab Page
+	@section Heading 2
+	@tip Set the styling for all second-level headings in your emails.
+	@style heading 2
+	*/
+        
+        h2 {
+            /*@editable*/
+            color: #202020;
+            /*@editable*/
+            font-family: Helvetica;
+            /*@editable*/
+            font-size: 22px;
+            /*@editable*/
+            font-style: normal;
+            /*@editable*/
+            font-weight: bold;
+            /*@editable*/
+            line-height: 125%;
+            /*@editable*/
+            letter-spacing: normal;
+            /*@editable*/
+            text-align: left;
+        }
+        /*
+	@tab Page
+	@section Heading 3
+	@tip Set the styling for all third-level headings in your emails.
+	@style heading 3
+	*/
+        
+        h3 {
+            /*@editable*/
+            color: #202020;
+            /*@editable*/
+            font-family: Helvetica;
+            /*@editable*/
+            font-size: 20px;
+            /*@editable*/
+            font-style: normal;
+            /*@editable*/
+            font-weight: bold;
+            /*@editable*/
+            line-height: 125%;
+            /*@editable*/
+            letter-spacing: normal;
+            /*@editable*/
+            text-align: left;
+        }
+        /*
+	@tab Page
+	@section Heading 4
+	@tip Set the styling for all fourth-level headings in your emails. These should be the smallest of your headings.
+	@style heading 4
+	*/
+        
+        h4 {
+            /*@editable*/
+            color: #202020;
+            /*@editable*/
+            font-family: Helvetica;
+            /*@editable*/
+            font-size: 18px;
+            /*@editable*/
+            font-style: normal;
+            /*@editable*/
+            font-weight: bold;
+            /*@editable*/
+            line-height: 125%;
+            /*@editable*/
+            letter-spacing: normal;
+            /*@editable*/
+            text-align: left;
+        }
+        /*
+	@tab Preheader
+	@section Preheader Style
+	@tip Set the background color and borders for your email's preheader area.
+	*/
+        
+        #templatePreheader {
+            /*@editable*/
+            background-color: #ffffff;
+            /*@editable*/
+            border-top: 0;
+            /*@editable*/
+            border-bottom: 0;
+            /*@editable*/
+            padding-top: 9px;
+            /*@editable*/
+            padding-bottom: 9px;
+        }
+        /*
+	@tab Preheader
+	@section Preheader Text
+	@tip Set the styling for your email's preheader text. Choose a size and color that is easy to read.
+	*/
+        
+        #templatePreheader .mcnTextContent,
+        #templatePreheader .mcnTextContent p {
+            /*@editable*/
+            color: #656565;
+            /*@editable*/
+            font-family: Helvetica;
+            /*@editable*/
+            font-size: 12px;
+            /*@editable*/
+            line-height: 150%;
+            /*@editable*/
+            text-align: left;
+        }
+        /*
+	@tab Preheader
+	@section Preheader Link
+	@tip Set the styling for your email's preheader links. Choose a color that helps them stand out from your text.
+	*/
+        
+        #templatePreheader .mcnTextContent a,
+        #templatePreheader .mcnTextContent p a {
+            /*@editable*/
+            color: #656565;
+            /*@editable*/
+            font-weight: normal;
+            /*@editable*/
+            text-decoration: underline;
+        }
+        /*
+	@tab Header
+	@section Header Style
+	@tip Set the background color and borders for your email's header area.
+	*/
+        
+        #templateHeader {
+            /*@editable*/
+            background-color: #FFFFFF;
+            /*@editable*/
+            border-top: 0;
+            /*@editable*/
+            border-bottom: 0;
+            /*@editable*/
+            padding-top: 9px;
+            /*@editable*/
+            padding-bottom: 0;
+        }
+        /*
+	@tab Header
+	@section Header Text
+	@tip Set the styling for your email's header text. Choose a size and color that is easy to read.
+	*/
+        
+        #templateHeader .mcnTextContent,
+        #templateHeader .mcnTextContent p {
+            /*@editable*/
+            color: #202020;
+            /*@editable*/
+            font-family: Helvetica;
+            /*@editable*/
+            font-size: 16px;
+            /*@editable*/
+            line-height: 150%;
+            /*@editable*/
+            text-align: left;
+        }
+        /*
+	@tab Header
+	@section Header Link
+	@tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
+	*/
+        
+        #templateHeader .mcnTextContent a,
+        #templateHeader .mcnTextContent p a {
+            /*@editable*/
+            color: #2BAADF;
+            /*@editable*/
+            font-weight: normal;
+            /*@editable*/
+            text-decoration: underline;
+        }
+        /*
+	@tab Body
+	@section Body Style
+	@tip Set the background color and borders for your email's body area.
+	*/
+        
+        #templateBody {
+            /*@editable*/
+            background-color: #FFFFFF;
+            /*@editable*/
+            border-top: 0;
+            /*@editable*/
+            border-bottom: 0;
+            /*@editable*/
+            padding-top: 0;
+            /*@editable*/
+            padding-bottom: 9px;
+        }
+        /*
+	@tab Body
+	@section Body Text
+	@tip Set the styling for your email's body text. Choose a size and color that is easy to read.
+	*/
+        
+        #templateBody .mcnTextContent,
+        #templateBody .mcnTextContent p {
+            /*@editable*/
+            color: #202020;
+            /*@editable*/
+            font-family: Helvetica;
+            /*@editable*/
+            font-size: 16px;
+            /*@editable*/
+            line-height: 150%;
+            /*@editable*/
+            text-align: left;
+        }
+        /*
+	@tab Body
+	@section Body Link
+	@tip Set the styling for your email's body links. Choose a color that helps them stand out from your text.
+	*/
+        
+        #templateBody .mcnTextContent a,
+        #templateBody .mcnTextContent p a {
+            /*@editable*/
+            color: #2BAADF;
+            /*@editable*/
+            font-weight: normal;
+            /*@editable*/
+            text-decoration: underline;
+        }
+        /*
+	@tab Footer
+	@section Footer Style
+	@tip Set the background color and borders for your email's footer area.
+	*/
+        
+        #templateFooter {
+            /*@editable*/
+            background-color: #f4f4f4;
+            /*@editable*/
+            border-top: 0;
+            /*@editable*/
+            border-bottom: 0;
+            /*@editable*/
+            padding-top: 9px;
+            /*@editable*/
+            padding-bottom: 9px;
+        }
+        /*
+	@tab Footer
+	@section Footer Text
+	@tip Set the styling for your email's footer text. Choose a size and color that is easy to read.
+	*/
+        
+        #templateFooter .mcnTextContent,
+        #templateFooter .mcnTextContent p {
+            /*@editable*/
+            color: #656565;
+            /*@editable*/
+            font-family: Helvetica;
+            /*@editable*/
+            font-size: 12px;
+            /*@editable*/
+            line-height: 150%;
+            /*@editable*/
+            text-align: center;
+        }
+        /*
+	@tab Footer
+	@section Footer Link
+	@tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
+	*/
+        
+        #templateFooter .mcnTextContent a,
+        #templateFooter .mcnTextContent p a {
+            /*@editable*/
+            color: #656565;
+            /*@editable*/
+            font-weight: normal;
+            /*@editable*/
+            text-decoration: underline;
+        }
+        
+        @media only screen and (min-width:768px) {
+            .templateContainer {
+                width: 600px !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            body,
+            table,
+            td,
+            p,
+            a,
+            li,
+            blockquote {
+                -webkit-text-size-adjust: none !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            body {
+                width: 100% !important;
+                min-width: 100% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            #bodyCell {
+                padding-top: 10px !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .mcnImage {
+                width: 100% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .mcnCaptionTopContent,
+            .mcnCaptionBottomContent,
+            .mcnTextContentContainer,
+            .mcnBoxedTextContentContainer,
+            .mcnImageGroupContentContainer,
+            .mcnCaptionLeftTextContentContainer,
+            .mcnCaptionRightTextContentContainer,
+            .mcnCaptionLeftImageContentContainer,
+            .mcnCaptionRightImageContentContainer,
+            .mcnImageCardLeftTextContentContainer,
+            .mcnImageCardRightTextContentContainer {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .mcnBoxedTextContentContainer {
+                min-width: 100% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .mcnImageGroupContent {
+                padding: 9px !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .mcnCaptionLeftContentOuter .mcnTextContent,
+            .mcnCaptionRightContentOuter .mcnTextContent {
+                padding-top: 9px !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .mcnImageCardTopImageContent,
+            .mcnCaptionBlockInner .mcnCaptionTopContent:last-child .mcnTextContent {
+                padding-top: 18px !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .mcnImageCardBottomImageContent {
+                padding-bottom: 9px !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .mcnImageGroupBlockInner {
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .mcnImageGroupBlockOuter {
+                padding-top: 9px !important;
+                padding-bottom: 9px !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .mcnTextContent,
+            .mcnBoxedTextContentColumn {
+                padding-right: 18px !important;
+                padding-left: 18px !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .mcnImageCardLeftImageContent,
+            .mcnImageCardRightImageContent {
+                padding-right: 18px !important;
+                padding-bottom: 0 !important;
+                padding-left: 18px !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            .mcpreview-image-uploader {
+                display: none !important;
+                width: 100% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            /*
+	@tab Mobile Styles
+	@section Heading 1
+	@tip Make the first-level headings larger in size for better readability on small screens.
+	*/
+            h1 {
+                /*@editable*/
+                font-size: 22px !important;
+                /*@editable*/
+                line-height: 125% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            /*
+	@tab Mobile Styles
+	@section Heading 2
+	@tip Make the second-level headings larger in size for better readability on small screens.
+	*/
+            h2 {
+                /*@editable*/
+                font-size: 20px !important;
+                /*@editable*/
+                line-height: 125% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            /*
+	@tab Mobile Styles
+	@section Heading 3
+	@tip Make the third-level headings larger in size for better readability on small screens.
+	*/
+            h3 {
+                /*@editable*/
+                font-size: 18px !important;
+                /*@editable*/
+                line-height: 125% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            /*
+	@tab Mobile Styles
+	@section Heading 4
+	@tip Make the fourth-level headings larger in size for better readability on small screens.
+	*/
+            h4 {
+                /*@editable*/
+                font-size: 16px !important;
+                /*@editable*/
+                line-height: 150% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            /*
+	@tab Mobile Styles
+	@section Boxed Text
+	@tip Make the boxed text larger in size for better readability on small screens. We recommend a font size of at least 16px.
+	*/
+            .mcnBoxedTextContentContainer .mcnTextContent,
+            .mcnBoxedTextContentContainer .mcnTextContent p {
+                /*@editable*/
+                font-size: 14px !important;
+                /*@editable*/
+                line-height: 150% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            /*
+	@tab Mobile Styles
+	@section Preheader Visibility
+	@tip Set the visibility of the email's preheader on small screens. You can hide it to save space.
+	*/
+            #templatePreheader {
+                /*@editable*/
+                display: block !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            /*
+	@tab Mobile Styles
+	@section Preheader Text
+	@tip Make the preheader text larger in size for better readability on small screens.
+	*/
+            #templatePreheader .mcnTextContent,
+            #templatePreheader .mcnTextContent p {
+                /*@editable*/
+                font-size: 14px !important;
+                /*@editable*/
+                line-height: 150% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            /*
+	@tab Mobile Styles
+	@section Header Text
+	@tip Make the header text larger in size for better readability on small screens.
+	*/
+            #templateHeader .mcnTextContent,
+            #templateHeader .mcnTextContent p {
+                /*@editable*/
+                font-size: 16px !important;
+                /*@editable*/
+                line-height: 150% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            /*
+	@tab Mobile Styles
+	@section Body Text
+	@tip Make the body text larger in size for better readability on small screens. We recommend a font size of at least 16px.
+	*/
+            #templateBody .mcnTextContent,
+            #templateBody .mcnTextContent p {
+                /*@editable*/
+                font-size: 16px !important;
+                /*@editable*/
+                line-height: 150% !important;
+            }
+        }
+        
+        @media only screen and (max-width: 480px) {
+            /*
+	@tab Mobile Styles
+	@section Footer Text
+	@tip Make the footer content text larger in size for better readability on small screens.
+	*/
+            #templateFooter .mcnTextContent,
+            #templateFooter .mcnTextContent p {
+                /*@editable*/
+                font-size: 14px !important;
+                /*@editable*/
+                line-height: 150% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <table align="center" border="0" cellpadding="0" cellspacing="0" height="0" width="0" id="preheaderTable">
+            <tr>
+                <td>
+                    <span style="display:none">Invitation to join Predikly Technologies HR Portal!</span>
+                </td>
+            </tr>
+        </table>
+        <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+            <tr>
+                <td align="center" valign="top" id="bodyCell">
+                    <!-- BEGIN TEMPLATE // -->
+                    <!--[if gte mso 9]>
+						<table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+						<tr>
+						<td align="center" valign="top" width="600" style="width:600px;">
+						<![endif]-->
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer" style="border: 1px solid #E4E4E4">
+                        <tr>
+                            <td valign="top" id="templatePreheader">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+                                    <tbody class="mcnTextBlockOuter">
+                                        <tr>
+                                            <td valign="top" class="mcnTextBlockInner">
+                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnTextContentContainer">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign="top" class="mcnTextContent" style="text-align:center; padding-top: 9px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 18px; font-style: normal; font-weight: bold; text-align: justify;">
+                                                                <center>
+                                                                    <table>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="border-bottom: 2px solid #4390EF">
+                                                                                    <h1 class="null" style="text-align: center; margin: 0">
+                                                                                        <span style="font-size:18px; display: inline-block;">
+                                                                                            <span style="font-family:arial,helvetica neue,helvetica,sans-serif; color: #000">
+                                                                                                Invitation
+                                                                                            </span>
+                                                                                        </span>
+                                                                                    </h1>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </center>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" id="templateHeader">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+                                    <tbody class="mcnTextBlockOuter">
+                                        <tr>
+                                            <td valign="top" class="mcnTextBlockInner">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" id="templateBody">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+                                    <tbody class="mcnTextBlockOuter">
+                                        <tr>
+                                            <td valign="top" class="mcnTextBlockInner">
+                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnTextContentContainer">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
+                                                                <h4 class="null" style="text-align: center;font-weight: 400">
+                                                                    <span>Bhushali Wagh</span>
+                                                                </h4>
+                                                                <p style="text-align:center">
+                                                                    invited you to join<br/><br/> Predikly Technologies HR Portal
+                                                                </p>
+                                                                <br/>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+                                    <tbody class="mcnTextBlockOuter">
+                                        <tr>
+                                            <td valign="top" class="mcnTextBlockInner">
+                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnTextContentContainer">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;" valign="top" align="center" class="mcnButtonBlockInner">
+                                                                <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer" style="border-collapse: separate !important;border-radius: 2px;background-color: #428BEF;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td align="center" valign="middle" class="mcnButtonContent" style="font-family: Arial;font-size: 20px;width: 180px;padding-top: 10px;padding-bottom: 10px;padding-left: 18px;padding-right: 18px;">
+                                                                                <a class="mcnButton " title="Take Action" href="https://app.keka.com/registration/MmFmZDAyOGEtM2UzMS00ZG/" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #fff;">Accept  Invitation</a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+                                    <tbody class="mcnTextBlockOuter">
+                                        <tr>
+                                            <td valign="top" class="mcnTextBlockInner">
+                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnTextContentContainer">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock" style="min-width:100%;">
+                                    <tbody class="mcnButtonBlockOuter">
+                                        <tr>
+                                            <td valign="top" class="mcnTextContent" style="padding-top:9px; padding-right: 18px; padding-bottom: 9px; padding-left: 18px;">
+                                                <div style="text-align: center; line-height: 15px"><span style="font-family:arial,helvetica neue,helvetica,sans-serif">
+                                                    <span style="color:#808080; font-size:14px;line-height:1.5">
+                                                        Your organization uses Keka to streamline HR operations
+                                                        and makes it easy for you to engage with your colleagues.
+                                                    </span>
+                                                    </span>
+                                                </div>
+                                                <br />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <table border="0" cellpadding="0" class="templateContainer" cellspacing="0">
+                        <tr>
+                            <td>
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width:100%;">
+                                    <tbody class="mcnImageBlockOuter">
+                                        <tr>
+                                            <td valign="top" style="padding-top:10px" class="mcnImageBlockInner">
+                                                <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width:100%;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="mcnImageContent" valign="top" style="padding-right: 0px; padding-left: 0px; padding-top: 0; padding-bottom: 0;">
+                                                                <img align="left" alt="" src="https://cdn.kekastatic.net/shared/branding/logo/keka-logo-100.png" width="65" style="max-width:65px; padding-bottom: 0; display: inline !important; vertical-align: bottom;height: 25px"
+                                                                    class="mcnImage">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if gte mso 9]>
+						</td>
+						</tr>
+						</table>
+						<![endif]-->
+                    <!-- // END TEMPLATE -->
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+
+</html>
